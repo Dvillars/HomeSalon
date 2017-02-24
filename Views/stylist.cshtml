@@ -2,11 +2,14 @@
   Layout = "Shared/_Layout.cshtml";
 }
 
+<h1>| Stylist @Model["Stylist Object"].GetName()'s Clients |</h1>
+
 @foreach (var client in Model["Client List"])
 {
 <li>@client.GetName()</li>
 }
 
-<a href="/">Home</a>
-<a href="/clients">View Clients</a>
-<a href="/stylists">View Stylists</a>
+
+<span>| <a href="/">Home</a> |</span>
+<span>| <a href="/clients">View Clients</a> |</span>
+<span>| <a href="/stylists">View Stylists</a> |</span>

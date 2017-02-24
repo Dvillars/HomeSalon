@@ -1,0 +1,14 @@
+body {
+  font-family: 'Pangolin', cursive;
+  color: #000000;
+  background-color: lightgreen;
+  font-size: 20px;
+}
+.btn {
+  background-color: lightgreen;
+  border: #000000 3px solid;
+}
+input {
+  background-color: lightgreen;
+  border: #000000 3px solid;
+}
