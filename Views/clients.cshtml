@@ -1,0 +1,29 @@
+@{
+  Layout = "Shared/_Layout.cshtml";
+}
+
+<h1>clients!</h1>
+
+<form action="/clients" method="post">
+  <label for="client">Add New Client!!</label>
+  <input id="client" type="text" name="client">
+  <label for="s-id">Add its Stylist!!</label>
+  <select name="s-id" id="s-id">
+    @foreach (var stylist in Model["Stylists"])
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select>
+
+  <button type="submit" name="button">Add!</button>
+</form>
+<ul>
+  @foreach (var client in Model["Clients"])
+  {
+  <li> @client.GetName() -- @client.GetStylistName(@client.GetIdStylist())</li>
+  }
+
+</ul>
+
+<a href="/">Home</a>
+<a href="/stylists">View Stylists</a>
