@@ -4,6 +4,26 @@
 ### *Setup/Installation Requirements:*
  After Cloning this repository to your computer you need to open the index.html file and the website should open up in your browser.
 
+in SQLCMD:
+
+    1> CREATE DATABASE hair_salon
+    2> GO
+    1> USE DATABASE hair_salon
+    2> GO
+    1> CREATE TABLE stylists
+    2> (
+    3> id int IDENTITY(1,1),
+    4> name VARCHAR(255)
+    5> )
+    6> GO
+    1> CREATE TABLE clients
+    2> (
+    3> id int IDENTITY(1,1),
+    4> name VARCHAR(255),
+    5> stylist_id int
+    6> )
+    7> GO
+
 ### __*Specifications:*__
 
 1. it will be able to see a list of all our stylists.
@@ -44,7 +64,7 @@ Stylists Examples (figure 2)
 
 if Joey was clicked (figure 3)
 
-| Joey's Clients | 
+| Joey's Clients |
 | -------------- |
 | Bob            |
 | Emma           |
