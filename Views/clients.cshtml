@@ -4,7 +4,7 @@
 
 <h1>| Clients |</h1>
 
-<form action="/clients" method="post">
+<form action="/clients" method="post" name="add">
   <label for="client">Add New Client!!</label>
   <input id="client" type="text" name="client">
   <label for="s-id">Add its Stylist!!</label>
@@ -15,15 +15,17 @@
     }
   </select>
 
-  <button class="btn" type="submit" name="button">Add!</button>
+  <button class="btn" type="submit" name="add">Add!</button>
 </form>
 <h3>Client <-> Stylist</h3>
 <ul>
   @foreach (var client in Model["Clients"])
   {
-  <li> @client.GetName() <-> @client.GetStylistName(@client.GetIdStylist())</li>
+  <form action="/clients/delete" method="post">
+    <input type="hidden" value="@client.GetId()" name="delete">
+    <li><a href="/client/@client.GetId()"> @client.GetName() <-> @client.GetStylistName(@client.GetIdStylist())</a> <button class="btn btn-sm" type="submit">Delete</button></li>
+  </form>
   }
-
 </ul>
 
 <span>| <a href="/">Home</a> |</span>

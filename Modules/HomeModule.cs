@@ -47,6 +47,27 @@ namespace HairSalon
         newClient.Save();
         return View["clients.cshtml", ModelMaker()];
       };
+
+      Post["/clients/delete"] = _ =>
+      {
+        Client.Find(Request.Form["delete"]).DeleteOne(Request.Form["delete"]);
+        return View["clients.cshtml", ModelMaker()];
+      };
+
+      Get["/client/{id}"] = parameters =>
+       {
+         Dictionary<string, object> model = ModelMaker();
+         model.Add("Client Object", Client.Find(parameters.id));
+         return View["client.cshtml", model];
+       };
+
+       Post["/client/{id}"] = parameters => {
+        Client.Find(parameters.id).Update(Request.Form["client"]);
+        Dictionary<string, object> model = ModelMaker();
+        model.Add("Client Object", Client.Find(parameters.id));
+        return View["client.cshtml", model];
+      };
+
     }
 
     public static Dictionary<string, object> ModelMaker()
