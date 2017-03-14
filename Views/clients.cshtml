@@ -21,10 +21,7 @@
 <ul>
   @foreach (var client in Model["Clients"])
   {
-  <form action="/clients/delete" method="post">
-    <input type="hidden" value="@client.GetId()" name="delete">
-    <li><a href="/client/@client.GetId()"> @client.GetName() <-> @client.GetStylistName(@client.GetIdStylist())</a> <button class="btn btn-sm" type="submit">Delete</button></li>
-  </form>
+    <li><a href="/client/@client.GetId()"> @client.GetName() <-> @client.GetStylistName(@client.GetIdStylist())</a></li>
   }
 </ul>
 

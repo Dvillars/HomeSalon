@@ -28,15 +28,15 @@ namespace HairSalon
       };
 
       Get["/stylists/{id}"]= parameters =>
-     {
-       Stylist newStylist = Stylist.Find(parameters.id);
-       Dictionary<string, object> model = ModelMaker();
-       model.Add("Stylist Object", newStylist);
-       model.Add("Client List", Client.GetByStylist(newStylist.GetId()));
-       return View["stylist.cshtml", model];
-     };
+      {
+        Stylist newStylist = Stylist.Find(parameters.id);
+        Dictionary<string, object> model = ModelMaker();
+        model.Add("Stylist Object", newStylist);
+        model.Add("Client List", Client.GetByStylist(newStylist.GetId()));
+        return View["stylist.cshtml", model];
+      };
 
-     Get["/clients"] = _ =>
+      Get["/clients"] = _ =>
       {
         return View["clients.cshtml", ModelMaker()];
       };
@@ -48,24 +48,26 @@ namespace HairSalon
         return View["clients.cshtml", ModelMaker()];
       };
 
-      Post["/clients/delete"] = _ =>
-      {
-        Client.Find(Request.Form["delete"]).DeleteOne(Request.Form["delete"]);
-        return View["clients.cshtml", ModelMaker()];
-      };
-
       Get["/client/{id}"] = parameters =>
-       {
-         Dictionary<string, object> model = ModelMaker();
-         model.Add("Client Object", Client.Find(parameters.id));
-         return View["client.cshtml", model];
-       };
-
-       Post["/client/{id}"] = parameters => {
-        Client.Find(parameters.id).Update(Request.Form["client"]);
+      {
         Dictionary<string, object> model = ModelMaker();
         model.Add("Client Object", Client.Find(parameters.id));
         return View["client.cshtml", model];
+      };
+
+      Patch["/client/{id}"] = parameters =>
+      {
+        Client.Find(parameters.id).Update(Request.Form["client"]);
+        Dictionary<string, object> model = ModelMaker();
+        model.Add("Client Object", Client.Find(parameters.id));
+        Console.WriteLine(Client.Find(parameters.id));
+        return View["client.cshtml", model];
+      };
+
+      Delete["/client/{id}"] = parameters =>
+      {
+        Client.Find(parameters.id).DeleteOne(parameters.id);
+        return View["clients.cshtml", ModelMaker()];
       };
 
     }

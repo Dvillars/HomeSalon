@@ -5,10 +5,15 @@
 <h1>| Client @Model["Client Object"].GetName()!|</h1>
 
 <form action="/client/@Model["Client Object"].GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH"/>
   <label for="client">Change Client Name!!</label>
-  <input id="client" type="text" name="client">
+  <input id="client" type="text" name="client"/>
+  <button class="btn" type="submit" >Change!</button>
+</form>
 
-  <button class="btn" type="submit">Change!</button>
+<form action="/client/@Model["Client Object"].GetId()" method="post">
+  <input type="hidden" name="_method" value="DELETE"/>
+  <button type="submit" class="btn">Delete!</button>
 </form>
 
 <span>| <a href="/">Home</a> |</span>
